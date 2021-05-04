@@ -127,3 +127,26 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+*.bak
+*.user.*
+*.user
+*.o
+libcoppeliaSim.*
+ui_qdlg*.h
+.qmake.stash
+.DS_Store
+Makefile
+Makefile.Debug
+Makefile.Release
+*.so
+*.so.*
+*.dylib
+build
+debug
+release
+mocinclude.opt
+object_script.*.Debug
+object_script.*.Release
+
