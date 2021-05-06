@@ -22,5 +22,11 @@ else:
 errorCode, left_motor_handle = sim.simxGetObjectHandle(clientID, 'Pioneer_p3dx_leftMotor', sim.simx_opmode_oneshot_wait)
 errorCode, right_motor_handle = sim.simxGetObjectHandle(clientID, 'Pioneer_p3dx_rightMotor', sim.simx_opmode_oneshot_wait)
 
-sim.simxSetJointTargetVelocity(clientID, left_motor_handle, 0.6, sim.simx_opmode_streaming)
-sim.simxSetJointTargetVelocity(clientID, right_motor_handle, 0.2, sim.simx_opmode_streaming)
+errorCode=sim.simxSetJointTargetVelocity(clientID, left_motor_handle, 0.1, sim.simx_opmode_streaming)
+errorCode=sim.simxSetJointTargetVelocity(clientID, right_motor_handle, 0.1, sim.simx_opmode_streaming)
+
+errorCode, sensor1 = sim.simxGetObjectHandle(clientID, 'Pioneer_p3dx_ultrasonicSensor1', sim.simx_opmode_oneshot_wait)
+errorCode, detectionState, detectedPoint, detectedObjectHandle, detectedSurfaceNormalVector = sim.simxReadProximitySensor(
+        clientID, sensor1, sim.simx_opmode_streaming)
+errorCode, detectionState, detectedPoint, detectedObjectHandle, detectedSurfaceNormalVector = sim.simxReadProximitySensor(
+        clientID, sensor1, sim.simx_opmode_buffer)
