@@ -24,3 +24,5 @@ errorCode, right_motor_handle = sim.simxGetObjectHandle(clientID, 'Pioneer_p3dx_
 
 sim.simxSetJointTargetVelocity(clientID, left_motor_handle, 0.6, sim.simx_opmode_streaming)
 sim.simxSetJointTargetVelocity(clientID, right_motor_handle, 0.2, sim.simx_opmode_streaming)
+
+"oi eu sou Steph"
