@@ -34,6 +34,8 @@ def main():
     Pioneer.moveBackward()
     time.sleep(2)
     Pioneer.moveForward()
+    time.sleep(6)
+    Pioneer.stop()
     
 #    errorCode, left_motor_handle = sim.simxGetObjectHandle(clientID, 'Pioneer_p3dx_leftMotor', sim.simx_opmode_oneshot_wait)
 #    errorCode, right_motor_handle = sim.simxGetObjectHandle(clientID, 'Pioneer_p3dx_rightMotor', sim.simx_opmode_oneshot_wait)

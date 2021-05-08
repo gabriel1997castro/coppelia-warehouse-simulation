@@ -34,3 +34,7 @@ class Robot:
     def turnRight(self):
         sim.simxSetJointTargetVelocity(self.clientID, self.r_motor_handle,-speed, s_mode)
         sim.simxSetJointTargetVelocity(self.clientID, self.l_motor_handle,speed, s_mode)
+
+    def stop(self):
+        sim.simxSetJointTargetVelocity(self.clientID, self.r_motor_handle, 0, s_mode)
+        sim.simxSetJointTargetVelocity(self.clientID, self.l_motor_handle, 0, s_mode)
