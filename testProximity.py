@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Created on Mon May 10 23:37:13 2021
+
+@author: gabriel
+"""
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
 Created on Mon May  3 00:42:53 2021
 
 @author: gabriel
@@ -17,13 +25,13 @@ sim.simxFinish(-1) # just in case, close all opened connections
 
 clientID=sim.simxStart('127.0.0.1',19999,True,True,5000,5) # Connect to CoppeliaSim
 
+# ultrasonic sensors
 front_range = [3, 4, 5, 6]
 front_left_range = [1, 2, 3]
 front_right_range = [6, 7, 8]
 back_right_range = [9, 10, 11]
 back_range = [11, 12, 13, 14]
 back_left_range = [14, 15, 16]
-
     
 if clientID!=-1:
     print ('Connected to remote API server')
@@ -31,30 +39,31 @@ else:
     print ('Connection could not be established')
     sys.exit("Could not connect")
     
-def verify_detection_arr(detection_state):
-    print(detection_state)
-    if (detection_state.count(True) > 0):
-        return True
+def isNear(distances):
+    print(distances)
+    for distance in distances:
+        if(distance < 10):
+            return True
     return False
 
 def main():
     Pioneer = Robot(clientID)
 
-    detection_state = [False for i in range(17)]
-    sensor = [False for i in range(17)]
+    distances = [40 for i in front_range]
+    sensor = [False for i in range(16)]
     
     # dp - detection point
     # doh - detection object handle
     # dsnv - detectedSurfaceNormalVector
 
-    for i in front_range:
+    for i in range(1,17):
         s_str = 'Pioneer_p3dx_ultrasonicSensor{}'.format(i) #sensor str
-        error, sensor[i-1] = sim.simxGetObjectHandle(clientID, s_str , sim.simx_opmode_oneshot_wait)
-        error, detection_state[i-1], dp, dop, dsnv = sim.simxReadProximitySensor(clientID, sensor[i-1], sim.simx_opmode_streaming)
+        error, sensor[i-1] = sim.simxGetDistanceHandle(clientID, s_str , sim.simx_opmode_oneshot_wait)
+        error, distances[i-1] = sim.simxReadDistance(clientID, sensor[i-1], sim.simx_opmode_streaming)
 
-    while(not verify_detection_arr([detection_state for i in front_range])):
-        for i in front_range:
-            errorCode, detection_state[i-1], dp, dop, dsnv = sim.simxReadProximitySensor(
+    while(not isNear(distances)):
+        for i in range(1,17):
+            errorCode, distances[i-1] = sim.simxReadDistance(
                 clientID, sensor[i-1], sim.simx_opmode_buffer)
 #            print('detectionState', detectionState)
     # Pioneer.turnLeft()
