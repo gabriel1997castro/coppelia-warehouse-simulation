@@ -22,6 +22,8 @@ Esta é uma simulação muito simplificada de um robô em uma warehouse com prop
 * Versão do python: 3.8.5
 * Versão do Copperlia: Edu 4.2.0
 
+![alt text](https://github.com/gabriel1997castro/coppelia_warehouse_simulation/blob/main/DocImg/CoppeliaSim.png)
+
 ## Images of the Project
 
 ![alt text](https://github.com/gabriel1997castro/coppelia_warehouse_simulation/blob/main/DocImg/Cena_Completa.png)
