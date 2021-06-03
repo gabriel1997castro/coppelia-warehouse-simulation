@@ -1,4 +1,4 @@
-# Vrep Warehouse Simulation
+# Simulação de Warehouse com VREP
 
 ## :zap: Sobre
 Esta é uma simulação muito simplificada de um robô em uma warehouse com propósitos de fazer um estudo de alguns requisitos de tempo real. A aplicação está configurada para rodar 30 vezes seguidas, mas pode ser alterado para quantas vezes for necessário. Para saber mais veja o [artigo](https://github.com/gabriel1997castro/coppelia_warehouse_simulation/blob/main/PTR_Lab_02_Relat_rio.pdf).
